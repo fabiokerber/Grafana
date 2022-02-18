@@ -26,17 +26,17 @@ http://192.168.0.245:3000
 Adicionar painel e Query.<br>
 Query "Random Walk", são números gerados de forma aleatória apenas para exemplo de gráfico mesmo.<br> 
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221516.jpg">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221516.png">
 </kbd>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221516.jpg">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221516.png">
 </kbd>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221523.jpg">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221523.png">
 </kbd>
 <br />
 <br />
