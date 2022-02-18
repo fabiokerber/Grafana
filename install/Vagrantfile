@@ -15,16 +15,18 @@ Vagrant.configure('2') do |config|
         grafana_srv.vm.provision 'shell', inline: 'sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
         grafana_srv.vm.provision 'shell', inline: 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
         grafana_srv.vm.provision 'shell', inline: 'sudo apt-get update'
-        grafana_srv.vm.provision 'shell', inline: 'sudo apt-get install -y docker-ce ca-certificates curl openssh-server python ntpdate'
+        grafana_srv.vm.provision 'shell', inline: 'sudo apt-get install -y docker-ce ca-certificates curl openssh-server python ntpdate acl'
         grafana_srv.vm.provision 'shell', inline: 'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
         grafana_srv.vm.provision 'shell', inline: 'sudo chmod +x /usr/local/bin/docker-compose'
+        grafana_srv.vm.provision 'shell', inline: 'sudo setfacl -m user:vagrant:rw /var/run/docker.sock'
+        grafana_srv.vm.provision 'shell', inline: 'sudo usermod -aG docker vagrant'
         grafana_srv.vm.provision 'shell', inline: 'mkdir -p /home/vagrant/volumes/grafana'
-        grafana_srv.vm.provision 'shell', inline: 'sudo docker network create grafana-net'
-        grafana_srv.vm.provision 'shell', inline: 'ID=$(id -u)'
-        grafana_srv.vm.provision 'shell', inline: 'sudo docker run -d --user $ID -v /home/vagrant/volumes/grafana/:/var/lib/grafana -p 3000:3000 --name=grafana --network=grafana-net grafana/grafana'
+        grafana_srv.vm.provision 'shell', inline: 'sudo chmod 777 -R /home/vagrant/volumes'
+        grafana_srv.vm.provision 'shell', inline: 'docker network create grafana-net'
+        grafana_srv.vm.provision 'shell', inline: 'docker run -d --user 1000 -v /home/vagrant/volumes/grafana/:/var/lib/grafana -p 3000:3000 --name=grafana --network=grafana-net grafana/grafana'
 
         grafana_srv.vm.provider 'virtualbox' do |vb|
-            vb.memory = 8192
+            vb.memory = 4096
             vb.cpus = 4
             vb.name = 'grafana-srv'
             vb.customize ['modifyvm', :id, '--nicpromisc2', 'allow-all']
