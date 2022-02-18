@@ -13,8 +13,9 @@ Painel é um mostrador de métricas.<br>
 O banco a ser utilizado é o Influx. Solução de Time Series Database (TSDB), mais leve para gravações simples de métricas.<br>
 O coletor de métricas a ser utilizado será o Telegraf. O mesmo tem total compatibilidade com o InfluxDB e claro, deve ser instalado no host à ser monitorado.<br>
 Obs:<br>
-1. Influx (v1.0) já é configurado em container via vagrant no grafana_srv.<br>
-2. Telegraf já instalado via vagrant no grafana_srv.<br>
+1. Grafana (latest) roda em container no grafana_srv.<br>
+2. Influx (v1.0) roda em container no grafana_srv.<br>
+3. Telegraf (latest) é executado no centos_srv03 e envia as métricas ao Influx no grafana_srv.<br>
 
 # Grafana + InfluxDB + Telegraf
 <kbd>
