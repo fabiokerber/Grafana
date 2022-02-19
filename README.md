@@ -30,10 +30,17 @@ Obs:<br>
 # Instalação inicial Grafana
 ```
 > cd install
-!! edit .env (GRAFANA_IP='192.168.0.245')
-!! edit files/telegraf.conf (urls = ["http://192.168.0.245:8086"])
-!! edit files/telegraf.conf (endpoint = "tcp://[ip]:[port]") - Monitorar Docker em outro host a partir do telegraf local, necessário expor a porta do serviço do docker.
-    Conteúdo override.conf:
+!! edit .env 
+    GRAFANA_IP='192.168.0.245'
+
+!! edit files/telegraf.conf
+    [[outputs.influxdb]]
+    urls = ["http://192.168.0.245:8086"]
+
+    [[inputs.docker]]
+    endpoint = "tcp://[ip]:[port]" - Monitorar Docker em outro host a partir do telegraf local, necessário expor a porta do serviço do docker.
+
+    Conteúdo arquivo override.conf para expor porta Docker:
     [Service]
     ExecStart=
     ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376
@@ -42,6 +49,23 @@ Obs:<br>
     $ sudo cp /vagrant/configs/override.conf /etc/systemd/system/docker.service.d/
     $ sudo systemctl daemon-reload
     $ sudo systemctl restart docker.service
+
+    [[inputs.tail]]
+    files = ["/var/log/httpd/access_log"]
+    from_beginning = false
+    grok_patterns = ["%{COMBINED_LOG_FORMAT}"]
+    name_override = "apache_access_log"
+    grok_custom_pattern_files = []
+    grok_custom_patterns = '''
+    '''
+    grok_timezone = "Local"
+    data_format = "grok"
+
+    [[inputs.logparser]] DEPRECATED!!!!
+
+    https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+    https://github.com/influxdata/telegraf/tree/master/plugins/parsers/grok
+    https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/README.md
 
 > vagrant up (irá subir a VM do grafana_srv e centos_srv03)
 
@@ -106,7 +130,7 @@ Obs:<br>
 <br />
 <br />
 
-# Adicionando nova query e novo painel de monitoramento de Infraestrutura
+# Painel de Uptime
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220924.png">
 </kbd>
@@ -153,7 +177,7 @@ Alterar para **Stat**.<br>
 <br />
 <br />
 
-# Criando novo painel de CPU (% EM USO)
+# Painel de CPU (% EM USO)
 *usage_idle* - Memória disponível.<br>
 *math(*-1 + 100)* - Fórmula matemática para trazer a porcentagem total de Memória disponível.<br> 
 1. FROM: **cpu** WHERE: **host** = **$servers** AND: **cpu** = **cpu-total**<br>
@@ -210,7 +234,7 @@ $ stress-ng -c 0 -l 95
 <br />
 <br />
 
-# Criando novo painel de DISCO (% EM USO)
+# Painel de DISCO (% EM USO)
 1. FROM: **disk** WHERE: **host** = **$servers** AND: **path** = **/**<br>
 2. SELECT: **field(used_percent)**<br>
 <kbd>
@@ -251,7 +275,7 @@ Selecionar **Bar gauge**.<br>
 <br />
 <br />
 
-# Criando novo painel de MEMÓRIA (TOTAL EM USO)
+# Painel de MEMÓRIA (TOTAL EM USO)
 1. FROM: **mem** WHERE: **host** = **$servers**<br>
 2. SELECT: **field(used_percent)**<br>
 <kbd>
@@ -290,7 +314,7 @@ $ stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/
 $ stress-ng --vm 2 --vm-bytes 256M --timeout 240s
 ```
 
-# Dashboard de monitoramento de containers
+# Painel de monitoramento de containers
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221557.png">
 </kbd>
@@ -303,6 +327,15 @@ $ stress-ng --vm 2 --vm-bytes 256M --timeout 240s
 <br />
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221607.png">
+</kbd>
+<br />
+<br />
+
+# Painel de monitoramento de logs de aplicação (Apache)
+Serão monitorados os logs do apache contidos em /var/log/httpd/ <br>
+Neste caso não será habilitado um input próprio para o apache, mas sim um módulo do telegraf que analisa/"parseia" logs.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221557.png">
 </kbd>
 <br />
 <br />
