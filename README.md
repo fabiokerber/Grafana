@@ -16,6 +16,7 @@ Obs:<br>
 1. Grafana **(latest)** roda em container no **grafana_srv**.<br>
 2. Influx **(v1.0)** roda em container no **grafana_srv**.<br>
 3. Telegraf **(latest)** é executado no **centos_srv03** e envia as métricas ao Influx no **grafana_srv**.<br>
+4. Para efeito de lab, **centos_srv03** possui apenas **um core** de CPU.<br>
 
 # Grafana + InfluxDB + Telegraf
 <kbd>
@@ -132,3 +133,48 @@ Alterar para **Stat**.<br>
 </kbd>
 <br />
 <br />
+
+# Criando novo painel de CPU (TOTAL/USO)
+*usage_idle* - Memória disponível.<br>
+*math(*-1 + 100)* - Fórmula matemática para trazer a porcentagem total de Memória disponível.<br> 
+1. FROM: **cpu** WHERE: **host** = **$servers** AND: **cpu** = **cpu-total**<br>
+2. SELECT: **field(usage_idle)** **math(*-1 + 100)**<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221007.png">
+</kbd>
+<br />
+<br />
+
+Alterar para **Gauge**.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091011.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091012.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091032.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091033.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091034.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091035.png">
+</kbd>
+<br />
+<br />
+
+$ stress-ng -c 0 -l 95
