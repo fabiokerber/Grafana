@@ -47,11 +47,20 @@ Vagrant.configure('2') do |config|
         centos_srv03.vm.provision 'shell', inline: 'sudo cp /vagrant/files/influxdb.repo /etc/yum.repos.d/'
         centos_srv03.vm.provision 'shell', inline: 'sudo sed -i s/^SELINUX=.*$/SELINUX=permissive/ /etc/selinux/config && sudo setenforce 0'
         centos_srv03.vm.provision 'shell', inline: 'sudo systemctl stop firewalld && sudo systemctl disable firewalld'
+        centos_srv02.vm.provision 'shell', inline: 'sudo curl -fsSL https://get.docker.com/ | sh'
+        centos_srv02.vm.provision 'shell', inline: 'sudo systemctl start docker && sudo systemctl enable docker'
+        centos_srv02.vm.provision 'shell', inline: 'sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
+        centos_srv02.vm.provision 'shell', inline: 'sudo chmod +x /usr/local/bin/docker-compose'
+        centos_srv03.vm.provision 'shell', inline: 'sudo setfacl -m user:vagrant:rw /var/run/docker.sock'
+        centos_srv03.vm.provision 'shell', inline: 'sudo usermod -aG docker vagrant'
         centos_srv03.vm.provision 'shell', inline: 'sudo yum install -y epel-release'
-        centos_srv03.vm.provision 'shell', inline: 'sudo yum install -y git ntpdate telegraf htop stress-ng'
+        centos_srv03.vm.provision 'shell', inline: 'sudo yum install -y git ntpdate telegraf htop stress-ng httpd'
         centos_srv03.vm.provision 'shell', inline: 'sudo mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.bkp'
         centos_srv03.vm.provision 'shell', inline: 'sudo cp /vagrant/files/telegraf.conf /etc/telegraf/telegraf.conf'
+        centos_srv03.vm.provision 'shell', inline: 'sudo usermod -aG docker telegraf'
         centos_srv03.vm.provision 'shell', inline: 'sudo systemctl start telegraf && sudo systemctl enable telegraf'
+        centos_srv03.vm.provision 'shell', inline: 'sudo systemctl start httpd && sudo systemctl enable httpd'
+        centos_srv03.vm.provision 'shell', inline: 'docker run -it --rm -d -p 8080:80 --name web nginx'
 
         centos_srv03.vm.provider 'virtualbox' do |vb|
             vb.memory = 1024
