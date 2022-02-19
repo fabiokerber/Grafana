@@ -134,7 +134,7 @@ Alterar para **Stat**.<br>
 <br />
 <br />
 
-# Criando novo painel de CPU (TOTAL/USO)
+# Criando novo painel de CPU (% EM USO)
 *usage_idle* - Memória disponível.<br>
 *math(*-1 + 100)* - Fórmula matemática para trazer a porcentagem total de Memória disponível.<br> 
 1. FROM: **cpu** WHERE: **host** = **$servers** AND: **cpu** = **cpu-total**<br>
@@ -185,6 +185,88 @@ $ stress-ng -c 0 -l 95
 <br />
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221127.png">
+</kbd>
+<br />
+<br />
+
+# Criando novo painel de DISCO (% EM USO)
+1. FROM: **disk** WHERE: **host** = **$servers** AND: **path** = **/**<br>
+2. SELECT: **field(used_percent)**<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221130.png">
+</kbd>
+<br />
+<br />
+
+Selecionar **Bar gauge**.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221131.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221135.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221136.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221137.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221138.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221140.png">
+</kbd>
+<br />
+<br />
+
+# Criando novo painel de MEMÓRIA (TOTAL EM USO)
+1. FROM: **mem** WHERE: **host** = **$servers**<br>
+2. SELECT: **field(used_percent)**<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221151.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221205.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221206.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221207.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221208.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221209.png">
+</kbd>
+<br />
+<br />
+$ stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
+
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221209.png">
 </kbd>
 <br />
 <br />
