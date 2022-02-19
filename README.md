@@ -61,3 +61,20 @@ Dados já sendo coletados - telegraf (centos_srv03) > influxdb (grafana_srv).<br
 </kbd>
 <br />
 <br />
+
+# Configurar Data Source no Grafana
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220900.png">
+</kbd>
+<br />
+<br />
+
+# Novo Dashboard utilizando variáveis
+Variáveis são utilizadas para quando for criar novos dashboard, utilizar os mesmos valores padrão.<br>
+**Refresh:** On Time Range Change - Quando alterar o valor de tempo na visualização, o Grafana atualiza o valor da variável em questão.<br>
+**Query:** SHOW TAG VALUES FROM system WITH KEY = host - Exibe os valores da métrica **system** onde a chave for igual à **host**.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220911.png">
+</kbd>
+<br />
+<br />
