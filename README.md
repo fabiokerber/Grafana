@@ -71,10 +71,64 @@ Dados já sendo coletados - telegraf (centos_srv03) > influxdb (grafana_srv).<br
 
 # Novo Dashboard utilizando variáveis
 Variáveis são utilizadas para quando for criar novos dashboard, utilizar os mesmos valores padrão.<br>
-**Refresh:** On Time Range Change - Quando alterar o valor de tempo na visualização, o Grafana atualiza o valor da variável em questão.<br>
-**Query:** SHOW TAG VALUES FROM system WITH KEY = host - Exibe os valores da métrica **system** onde a chave for igual à **host**.<br>
+**Refresh:** *On Time Range Change* - Quando alterar o valor de tempo na visualização, o Grafana atualiza o valor da variável em questão.<br>
+**Query:** *SHOW TAG VALUES FROM system WITH KEY = host* - Exibe os valores da métrica **system** onde a chave for igual à **host**.<br>
+Obs:<br>
+1. Clicando fora dos campos, já é exibido um preview do valor coletado.<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220911.png">
+</kbd>
+<br />
+<br />
+
+# Adicionando novo painel/query ao Dashboard
+Variáveis são utilizadas para quando for criar novos dashboard, utilizar os mesmos valores padrão.<br>
+**Refresh:** *On Time Range Change* - Quando alterar o valor de tempo na visualização, o Grafana atualiza o valor da variável em questão.<br>
+**Query:** *SHOW TAG VALUES FROM system WITH KEY = host* - Exibe os valores da métrica **system** onde a chave for igual à **host**.<br>
+Obs:<br>
+1. Clicando fora dos campos, já é exibido um preview do valor coletado.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220924.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220925.png">
+</kbd>
+<br />
+<br />
+
+1. FROM: **system** WHERE: **host** = **$servers**<br>
+2. SELECT: **field(uptime)**<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220926.png">
+</kbd>
+<br />
+<br />
+
+Alterar para **Stat**.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220940.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220949.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220950.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220951.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220952.png">
 </kbd>
 <br />
 <br />
