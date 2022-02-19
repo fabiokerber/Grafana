@@ -70,6 +70,17 @@ Dados já sendo coletados - telegraf (centos_srv03) > influxdb (grafana_srv).<br
 <br />
 <br />
 
+# Importar Dash pronta do InfluxDB
+New Dashboard > Import <br>
+https://grafana.com/grafana/dashboards/11912<br>
+Obs:<br>
+1. Necessário ajustar telegraf.conf
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221317.png">
+</kbd>
+<br />
+<br />
+
 # Novo Dashboard utilizando variáveis
 Variáveis são utilizadas para quando for criar novos dashboard, utilizar os mesmos valores padrão.<br>
 **Refresh:** *On Time Range Change* - Quando alterar o valor de tempo na visualização, o Grafana atualiza o valor da variável em questão.<br>
@@ -264,6 +275,7 @@ Selecionar **Bar gauge**.<br>
 <br />
 <br />
 $ stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
+$ stress-ng --vm 2 --vm-bytes 256M --timeout 240s
 
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221209.png">
