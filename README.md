@@ -152,29 +152,39 @@ Alterar para **Gauge**.<br>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091012.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091100.png">
 </kbd>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091032.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091121.png">
 </kbd>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091033.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091122.png">
 </kbd>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091034.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091123.png">
 </kbd>
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091035.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091124.png">
 </kbd>
 <br />
 <br />
-
 $ stress-ng -c 0 -l 95
+
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091126.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/19022022091127.png">
+</kbd>
+<br />
+<br />
