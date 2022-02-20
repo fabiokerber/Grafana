@@ -239,7 +239,12 @@ from(bucket: "telegraf")
 <br />
 <br />
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221047.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221043.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221044.png">
 </kbd>
 <br />
 <br />
