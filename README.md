@@ -54,9 +54,15 @@ http://192.168.0.245:8086/<br>
 </kbd>
 <br />
 <br />
-tcp:///var/run/docker.sock
+tcp:///var/run/docker.sock<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222127.png">
+</kbd>
+<br />
+<br />
+Anotar info!<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222129.png">
 </kbd>
 <br />
 <br />
