@@ -168,27 +168,6 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 <br />
 <br />
 
-# Query Build InfluxDB e Primeiro Painel Grafana
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220753.png">
-</kbd>
-<br />
-<br />
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220813.png">
-</kbd>
-<br />
-<br />
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220815.png">
-</kbd>
-<br />
-<br />
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220827.png">
-</kbd>
-<br />
-<br />
 
 # Novo Dashboard utilizando variáveis
 Variáveis são utilizadas para quando for criar novos dashboard, utilizar os mesmos valores padrão.<br>
@@ -213,7 +192,27 @@ Obs:<br>
 <br />
 <br />
 
-# Painel CPU
+# Query Build InfluxDB e Primeiro Painel Grafana CPU
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220753.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220813.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220815.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220827.png">
+</kbd>
+<br />
+<br />
 
 # Painel Memória
 ```
