@@ -179,6 +179,16 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 </kbd>
 <br />
 <br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220815.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220827.png">
+</kbd>
+<br />
+<br />
 
 ## OLD
 
