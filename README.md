@@ -1,4 +1,4 @@
-# Grafana
+## Grafana
 
 Pré requisito:
 
@@ -119,6 +119,12 @@ http://192.168.0.245:8086
 <br />
 <br />
 
+# Acessar o Grafana
+```
+http://192.168.0.245:3000
+    admin | (admin)
+```
+
 # Configurar Data Source no Grafana
 Antes de configurar o Data Source, é necessário anotar o admin's Token!<br>
 <kbd>
@@ -143,12 +149,6 @@ Agora acesse o Grafana e configure o Data Source.<br>
 <br />
 <br />
 
-# Acessar o Grafana
-```
-http://192.168.0.245:3000
-    admin | (admin)
-```
-
 # Primeira Dashboard
 Adicionar painel e Query.<br>
 Query **Random Walk**, são números gerados de forma aleatória apenas para exemplo de gráfico mesmo.<br> 
@@ -168,7 +168,16 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 <br />
 <br />
 
-# Importar Dash pronta do InfluxDB
+# Query Build InfluxDB e Primeiro Painel Grafana
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220753.png">
+</kbd>
+<br />
+<br />
+
+## OLD
+
+# Importar Dash pronta do InfluxDB (somente para utilização Data Source "InfluxDB")
 New Dashboard > Import <br>
 https://grafana.com/grafana/dashboards/11912<br>
 Obs:<br>
@@ -191,7 +200,6 @@ Obs:<br>
 <br />
 <br />
 
-200220220753
 
 # Painel de Uptime
 <kbd>
