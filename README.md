@@ -190,6 +190,47 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 <br />
 <br />
 
+# Novo Dashboard utilizando variáveis
+Variáveis são utilizadas para quando for criar novos dashboard, utilizar os mesmos valores padrão.<br>
+**Refresh:** *On Time Range Change* - Quando alterar o valor de tempo na visualização, o Grafana atualiza o valor da variável em questão.<br>
+
+```
+import "influxdata/influxdb/v1"
+v1.tagValues(
+    bucket: v.bucket,
+    tag: "host",
+    predicate: (r) => true,
+    start: -1d
+)
+```
+
+Obs:<br>
+1. Clicando fora dos campos, já é exibido um preview do valor coletado.<br>
+2. Exibe os valores da métrica **system** onde a chave for igual à **host**.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220858.png">
+</kbd>
+<br />
+<br />
+
+# Painel CPU
+
+# Painel Memória
+```
+from(bucket: "telegraf")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "mem")
+  |> filter(fn: (r) => r["_field"] == "total" or r["_field"] == "cached")
+  |> filter(fn: (r) => r["host"] == "centos-srv03")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "last")
+```
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221034.png">
+</kbd>
+<br />
+<br />
+
 ## OLD
 
 # Importar Dash pronta do InfluxDB (somente para utilização Data Source "InfluxDB")
