@@ -335,10 +335,10 @@ from(bucket: "telegraf")
   |> filter(fn: (r) => r["endpoint"] == "/api/v2/query")
   |> filter(fn: (r) => r["org_id"] == "101c17b5d2fa3be8")
   |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
-  |> yield(name: "mean")
+  |> yield(name: "last")
 ```
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221233.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221233.png">
 </kbd>
 <br />
 <br />
