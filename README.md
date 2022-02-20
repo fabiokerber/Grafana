@@ -27,6 +27,36 @@ Obs:<br>
 <br />
 <br />
 
+# Alterar configurações iniciais e start grafana_srv e centos_srv03
+```
+> cd install
+!! edit .env 
+    GRAFANA_IP='192.168.0.245'
+
+!! edit files/telegraf.conf
+    [[outputs.influxdb_v2]]
+      urls = ["http://192.168.0.245:8086"]
+
+    [[inputs.docker]]
+      endpoint = "tcp://[ip]:[port]" - Monitorar Docker em outro host a partir do telegraf local, necessário expor a porta do serviço do docker.
+
+    Conteúdo arquivo override.conf para expor porta Docker:
+    [Service]
+    ExecStart=
+    ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376
+    
+    $ sudo mkdir -p /etc/systemd/system/docker.service.d/
+    $ sudo cp /vagrant/configs/override.conf /etc/systemd/system/docker.service.d/
+    $ sudo systemctl daemon-reload
+    $ sudo systemctl restart docker.service
+
+    https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+    https://github.com/influxdata/telegraf/tree/master/plugins/parsers/grok
+    https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/README.md
+
+> vagrant up (irá subir a VM do grafana_srv e centos_srv03)
+```
+
 # Instalação inicial InfluxDB
 ```
 http://192.168.0.245:8086/
@@ -69,36 +99,6 @@ Anotar info!<br>
 <br />
 <br />
 
-# Alterar configurações iniciais e start grafana_srv e centos_srv03
-```
-> cd install
-!! edit .env 
-    GRAFANA_IP='192.168.0.245'
-
-!! edit files/telegraf.conf
-    [[outputs.influxdb_v2]]
-      urls = ["http://192.168.0.245:8086"]
-
-    [[inputs.docker]]
-      endpoint = "tcp://[ip]:[port]" - Monitorar Docker em outro host a partir do telegraf local, necessário expor a porta do serviço do docker.
-
-    Conteúdo arquivo override.conf para expor porta Docker:
-    [Service]
-    ExecStart=
-    ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376
-    
-    $ sudo mkdir -p /etc/systemd/system/docker.service.d/
-    $ sudo cp /vagrant/configs/override.conf /etc/systemd/system/docker.service.d/
-    $ sudo systemctl daemon-reload
-    $ sudo systemctl restart docker.service
-
-    https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
-    https://github.com/influxdata/telegraf/tree/master/plugins/parsers/grok
-    https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/README.md
-
-> vagrant up (irá subir a VM do grafana_srv e centos_srv03)
-```
-
 # Inserir token no serviço telegraf executando em centos_srv03
 ```
 > cd install
@@ -128,7 +128,7 @@ http://192.168.0.245:3000
 ```
 
 # Configurar Data Source no Grafana
-Antes de configurar o Data Source, é necessário anotar o admin's Token!<br>
+Antes de configurar o Data Source no Grafana, é necessário anotar o **admin's Token** no InfluxDB!<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222259.png">
 </kbd>
