@@ -28,7 +28,9 @@ Obs:<br>
 <br />
 
 # Instalação inicial InfluxDB
-http://192.168.0.245:8086/<br>
+```
+http://192.168.0.245:8086/
+```
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222122.png">
 </kbd>
