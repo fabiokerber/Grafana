@@ -14,7 +14,7 @@ O banco a ser utilizado é o **InfluxDB**. Solução de **Time Series Database (
 O coletor de métricas a ser utilizado será o **Telegraf**. O mesmo tem total compatibilidade com o InfluxDB e claro, deve ser instalado no host à ser monitorado.<br>
 Obs:<br>
 1. Grafana **(latest)** roda em container no **grafana_srv**.<br>
-2. Influx **(v1.0)** roda em container no **grafana_srv**.<br>
+2. Influx **(v2.1.1)** roda em container no **grafana_srv**.<br>
 3. Telegraf **(latest)** é executado no **centos_srv03** e envia as métricas ao Influx no **grafana_srv**.<br>
 4. Para efeito de lab, **centos_srv03** possui apenas **um core** de CPU.<br>
 5. Container NGINX:8080 **(latest)** é executado no **centos_srv03** apenas para efeitos de monitoramento.<br>
@@ -23,6 +23,40 @@ Obs:<br>
 # Grafana + InfluxDB + Telegraf
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221600.png">
+</kbd>
+<br />
+<br />
+
+# Instalação inicial InfluxDB
+http://192.168.0.245:8086/<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222122.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222123.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222124.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222125.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222126.png">
+</kbd>
+<br />
+<br />
+tcp:///var/run/docker.sock
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222127.png">
 </kbd>
 <br />
 <br />

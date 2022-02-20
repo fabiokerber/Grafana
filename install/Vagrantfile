@@ -24,7 +24,7 @@ Vagrant.configure('2') do |config|
         grafana_srv.vm.provision 'shell', inline: 'sudo chown vagrant. -R /home/vagrant/volumes'
         grafana_srv.vm.provision 'shell', inline: 'docker network create grafana-net'
         grafana_srv.vm.provision 'shell', inline: 'docker run -d --user 1000 -v /home/vagrant/volumes/grafana/:/var/lib/grafana -p 3000:3000 --name=grafana --network=grafana-net grafana/grafana'
-        grafana_srv.vm.provision 'shell', inline: 'docker run -d -v /home/vagrant/volumes/influxdb/:/var/lib/influxdb -p 8083:8083 -p 8086:8086 -p 25826:25826/udp --name=influxdb --network=grafana-net influxdb:1.0'
+        grafana_srv.vm.provision 'shell', inline: 'docker run -d -v /home/vagrant/volumes/influxdb/:/var/lib/influxdb -p 8083:8083 -p 8086:8086 -p 25826:25826/udp --name=influxdb --network=grafana-net influxdb:2.1.1'
 
         grafana_srv.vm.provider 'virtualbox' do |vb|
             vb.memory = 4096
