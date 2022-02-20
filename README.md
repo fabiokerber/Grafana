@@ -54,7 +54,7 @@ http://192.168.0.245:8086/<br>
 </kbd>
 <br />
 <br />
-tcp:///var/run/docker.sock<br>
+unix:///var/run/docker.sock<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222127.png">
 </kbd>
@@ -67,18 +67,18 @@ Anotar info!<br>
 <br />
 <br />
 
-# Instalação inicial Grafana
+# Alterar configurações iniciais e start grafana_srv e centos_srv03
 ```
 > cd install
 !! edit .env 
     GRAFANA_IP='192.168.0.245'
 
 !! edit files/telegraf.conf
-    [[outputs.influxdb]]
-    urls = ["http://192.168.0.245:8086"]
+    [[outputs.influxdb_v2]]
+      urls = ["http://192.168.0.245:8086"]
 
     [[inputs.docker]]
-    endpoint = "tcp://[ip]:[port]" - Monitorar Docker em outro host a partir do telegraf local, necessário expor a porta do serviço do docker.
+      endpoint = "tcp://[ip]:[port]" - Monitorar Docker em outro host a partir do telegraf local, necessário expor a porta do serviço do docker.
 
     Conteúdo arquivo override.conf para expor porta Docker:
     [Service]
@@ -90,25 +90,34 @@ Anotar info!<br>
     $ sudo systemctl daemon-reload
     $ sudo systemctl restart docker.service
 
-    [[inputs.tail]]
-    files = ["/var/log/httpd/access_log"]
-    from_beginning = false
-    grok_patterns = ["%{COMBINED_LOG_FORMAT}"]
-    name_override = "apache_access_log"
-    grok_custom_pattern_files = []
-    grok_custom_patterns = '''
-    '''
-    grok_timezone = "Local"
-    data_format = "grok"
-
-    [[inputs.logparser]] DEPRECATED!!!!
-
     https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
     https://github.com/influxdata/telegraf/tree/master/plugins/parsers/grok
     https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/README.md
 
 > vagrant up (irá subir a VM do grafana_srv e centos_srv03)
+```
 
+# Inserir token no serviço telegraf executando em centos_srv03
+```
+> cd install
+> vagrant ssh centos_srv03
+    $ sudo vim /etc/telegraf/telegraf.conf
+        [[outputs.influxdb_v2]]
+          ...
+          token = "$INFLUX_TOKEN"
+
+    $ sudo systemctl restart telegraf
+```
+
+# Verificar no InfluxDB se estão chegando os dados de monitoramento
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222248.png">
+</kbd>
+<br />
+<br />
+
+# Acessar o Grafana
+```
 http://192.168.0.245:3000
     admin | (admin)
 ```
