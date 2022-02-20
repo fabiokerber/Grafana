@@ -323,11 +323,22 @@ from(bucket: "telegraf")
 <br />
 <br />
 
-# Painel de monitoramento de logs de aplicação (Apache)
-Serão monitorados os logs do apache contidos em /var/log/httpd/ <br>
+# Painel de monitoramento HTTP 200 (Apache)
+Serão monitorados os logs do apache contidos em /var/log/httpd/.<br>
 Neste caso não será habilitado um input próprio para o apache, mas sim um módulo do telegraf que analisa/"parseia" logs.<br>
+```
+from(bucket: "telegraf")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["status"] == "200")
+  |> filter(fn: (r) => r["_field"] == "counter")
+  |> filter(fn: (r) => r["_measurement"] == "http_query_request_count")
+  |> filter(fn: (r) => r["endpoint"] == "/api/v2/query")
+  |> filter(fn: (r) => r["org_id"] == "101c17b5d2fa3be8")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+```
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221557.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221233.png">
 </kbd>
 <br />
 <br />
