@@ -141,17 +141,26 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 <br />
 <br />
 
-# InfluxDB e Telegraf
-Dados já sendo coletados - telegraf (centos_srv03) > influxdb (grafana_srv).<br> 
+# Configurar Data Source no Grafana
+Antes de configurar o Data Source, é necessário anotar o admin's Token!<br>
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/180220221833.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222259.png">
 </kbd>
 <br />
 <br />
-
-# Configurar Data Source no Grafana
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222300.png">
+</kbd>
+<br />
+<br />
+Agora acesse o Grafana e configure o Data Source.<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220900.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222258.png">
 </kbd>
 <br />
 <br />
