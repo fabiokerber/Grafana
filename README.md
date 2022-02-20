@@ -195,6 +195,16 @@ Obs:<br>
 <br />
 
 # Query Build InfluxDB e Primeiro Painel Grafana CPU
+```
+from(bucket: "telegraf")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["host"] == "centos-srv03")
+  |> filter(fn: (r) => r["_measurement"] == "cpu")
+  |> filter(fn: (r) => r["_field"] == "usage_idle" or r["_field"] == "usage_user" or r["_field"] == "usage_system" or r["_field"] == "usage_iowait" or r["_field"] == "usage_irq" or r["_field"] == "usage_nice" or r["_field"] == "usage_softirq" or r["_field"] == "usage_steal" or r["_field"] == "usage_guest" or r["_field"] == "usage_guest_nice")
+  |> filter(fn: (r) => r["cpu"] == "cpu-total")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+```
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220753.png">
 </kbd>
@@ -217,8 +227,6 @@ Obs:<br>
 <br />
 
 # Painel Memória
-Obs:<br>
-1. Talvez devido ao valor Max estar setado
 ```
 from(bucket: "telegraf")
   |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
@@ -245,6 +253,22 @@ from(bucket: "telegraf")
 <br />
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221044.png">
+</kbd>
+<br />
+<br />
+
+# Painel Memória
+```
+from(bucket: "telegraf")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_field"] == "uptime")
+  |> filter(fn: (r) => r["_measurement"] == "system")
+  |> filter(fn: (r) => r["host"] == "centos-srv03")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "last")
+```
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221111.png">
 </kbd>
 <br />
 <br />
