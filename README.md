@@ -217,6 +217,8 @@ Obs:<br>
 <br />
 
 # Painel Memória
+Obs:<br>
+1. Talvez devido ao valor Max estar setado
 ```
 from(bucket: "telegraf")
   |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
@@ -228,6 +230,16 @@ from(bucket: "telegraf")
 ```
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221034.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221042.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221047.png">
 </kbd>
 <br />
 <br />
