@@ -1,4 +1,4 @@
-## Grafana
+# Grafana
 
 Pré requisito:
 
@@ -174,6 +174,11 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 </kbd>
 <br />
 <br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220220813.png">
+</kbd>
+<br />
+<br />
 
 ## OLD
 
@@ -196,6 +201,11 @@ Obs:<br>
 1. Clicando fora dos campos, já é exibido um preview do valor coletado.<br>
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220911.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220919.png">
 </kbd>
 <br />
 <br />
