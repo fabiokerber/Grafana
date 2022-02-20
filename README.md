@@ -110,8 +110,35 @@ Anotar info!<br>
 ```
 
 # Verificar no InfluxDB se estão chegando os dados de monitoramento
+```
+http://192.168.0.245:8086
+```
 <kbd>
     <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222248.png">
+</kbd>
+<br />
+<br />
+
+# Configurar Data Source no Grafana
+Antes de configurar o Data Source, é necessário anotar o admin's Token!<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222259.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222300.png">
+</kbd>
+<br />
+<br />
+Agora acesse o Grafana e configure o Data Source.<br>
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220900.png">
+</kbd>
+<br />
+<br />
+<kbd>
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222258.png">
 </kbd>
 <br />
 <br />
@@ -141,30 +168,6 @@ Query **Random Walk**, são números gerados de forma aleatória apenas para exe
 <br />
 <br />
 
-# Configurar Data Source no Grafana
-Antes de configurar o Data Source, é necessário anotar o admin's Token!<br>
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222259.png">
-</kbd>
-<br />
-<br />
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222300.png">
-</kbd>
-<br />
-<br />
-Agora acesse o Grafana e configure o Data Source.<br>
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220220900.png">
-</kbd>
-<br />
-<br />
-<kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220222258.png">
-</kbd>
-<br />
-<br />
-
 # Importar Dash pronta do InfluxDB
 New Dashboard > Import <br>
 https://grafana.com/grafana/dashboards/11912<br>
@@ -187,6 +190,8 @@ Obs:<br>
 </kbd>
 <br />
 <br />
+
+200220220753
 
 # Painel de Uptime
 <kbd>
