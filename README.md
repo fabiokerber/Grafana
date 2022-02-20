@@ -227,7 +227,7 @@ from(bucket: "telegraf")
   |> yield(name: "last")
 ```
 <kbd>
-    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/190220221034.png">
+    <img src="https://github.com/fabiokerber/Grafana/blob/main/img/200220221034.png">
 </kbd>
 <br />
 <br />
